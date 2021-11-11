@@ -7,6 +7,7 @@ import NotFound from '../pages/NotFound';
 import Profile from '../pages/Profile';
 import ProfileEdit from '../pages/ProfileEdit';
 import Search from '../pages/Search';
+import Loading from '../components/Loading';
 
 export default class routes extends Component {
   render() {
@@ -18,6 +19,7 @@ export default class routes extends Component {
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/profile/edit" component={ ProfileEdit } />
         <Route exact path="/search" component={ Search } />
+        <Route exact path="/loading" component={ Loading } />
         <Route exact path="*" component={ NotFound } />
       </Switch>
     );
