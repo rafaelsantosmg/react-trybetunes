@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
+import Form from '../components/Form';
 import Loading from '../components/Loading';
+import './Login.css';
+import logo from '../images/img_login.svg';
 
 export default class Login extends Component {
   constructor() {
@@ -23,7 +26,7 @@ export default class Login extends Component {
     this.setState(({ isLoading: true }));
     const { user } = this.state;
     const response = await createUser(user);
-    if (response === 'OK') return this.setState({ redirect: true });
+    if (response === 'OK') return this.setState({ redirect: true, isLoading: false });
   }
 
   onChangeInput({ target }) {
@@ -50,32 +53,21 @@ export default class Login extends Component {
     } = this;
 
     return (
-      <div data-testid="page-login">
-        <form onSubmit={ handleRedirect }>
-          <div className="input-group mb-3">
-            <span className="input-group-text" id="basic-addon1">Usuário</span>
-            <input
-              data-testid="login-name-input"
-              type="text"
-              className="form-control"
-              placeholder="Nome de Usuário"
-              aria-label="Username"
-              aria-describedby="basic-addon1"
-              onChange={ onChangeInput }
-            />
-            <button
-              data-testid="login-submit-button"
-              type="submit"
-              className="btn btn-primary btn-lg"
-              disabled={ isDisabled }
-            >
-              Entrar
-            </button>
-          </div>
-        </form>
-        { isLoading && <Loading /> }
-        { redirect && <Redirect to="/search" /> }
-      </div>
+      isLoading ? (<Loading />) : (
+        <div className="login-page" data-testid="page-login">
+          <figure>
+            <img src={ logo } alt="Logo TrybeTunes" />
+          </figure>
+          <Form
+            inputId="login-name-input"
+            buttonId="login-submit-button"
+            onSubmit={ handleRedirect }
+            isDisabled={ isDisabled }
+            onChangeInput={ onChangeInput }
+          />
+          { redirect && (<Redirect to="/search" />) }
+        </div>
+      )
     );
   }
 }
