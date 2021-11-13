@@ -59,12 +59,16 @@ export default class Login extends Component {
             <img src={ logo } alt="Logo TrybeTunes" />
           </figure>
           <Form
+            title="Usuário"
             inputId="login-name-input"
             buttonId="login-submit-button"
+            placeholder="Nome de Usuário"
             onSubmit={ handleRedirect }
             isDisabled={ isDisabled }
             onChangeInput={ onChangeInput }
-          />
+          >
+            Entrar
+          </Form>
           { redirect && (<Redirect to="/search" />) }
         </div>
       )
