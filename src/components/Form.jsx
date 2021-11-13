@@ -11,7 +11,7 @@ export default class Form extends Component {
         <div className="input-group mb-3">
           <span className="input-group-text" id="basic-addon1">Usuário</span>
           <Input
-            data-testid={ inputId }
+            id={ inputId }
             onChangeInput={ onChangeInput }
           />
           <Button

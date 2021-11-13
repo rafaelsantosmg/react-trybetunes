@@ -19,6 +19,11 @@ export default class Input extends Component {
 }
 
 Input.propTypes = {
-  id: propTypes.string.isRequired,
-  onChangeInput: propTypes.func.isRequired,
+  id: propTypes.string,
+  onChangeInput: propTypes.func,
+};
+
+Input.defaultProps = {
+  id: '',
+  onChangeInput: () => {},
 };
