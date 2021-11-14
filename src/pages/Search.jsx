@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import Form from '../components/Form';
 import Loading from '../components/Loading';
+import LinksAlbum from '../components/LinksAlbum';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import './Search.css';
 
 export default class Search extends Component {
   constructor() {
@@ -13,6 +15,7 @@ export default class Search extends Component {
       isLoading: false,
       albumName: '',
       listAlbum: [],
+      notFoundAlbum: false,
     };
     this.onChangeInput = this.onChangeInput.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -30,6 +33,7 @@ export default class Search extends Component {
       albumName: album,
       isLoading: false,
       album: '',
+      notFoundAlbum: response.length === 0,
     }));
   }
 
@@ -50,13 +54,13 @@ export default class Search extends Component {
         isDisabledSearch,
         isLoading,
         listAlbum,
-
+        notFoundAlbum,
       },
       onChangeInput,
       handleSearch,
     } = this;
     return (
-      <div data-testid="page-search">
+      <div className="search" data-testid="page-search">
         <Header />
         { !isLoading && (
           <Form
@@ -74,16 +78,12 @@ export default class Search extends Component {
         { isLoading && (<Loading />) }
         <p>
           Resultado de álbuns de:
-          {' '}
-          { albumName }
+          { ` ${albumName}` }
         </p>
-        { listAlbum.map((album) => (
-          <div key={ album.collectionId }>
-            <p>{ album.artistName }</p>
-            <p>{ album.collection }</p>
-            <img src={ album.artworkUrl100 } alt={ album.artistName } />
-          </div>
-        )) }
+        <div className="cards">
+          { notFoundAlbum ? (<h2>Nenhum álbum foi encontrado</h2>)
+            : (<LinksAlbum listAlbum={ listAlbum } />) }
+        </div>
       </div>
     );
   }
