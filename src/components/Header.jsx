@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
@@ -25,6 +26,7 @@ export default class Header extends Component {
 
   render() {
     const { user, isLoading } = this.state;
+    const { active } = this.props;
     return (
       isLoading ? (<Loading />) : (
         <header data-testid="header-component">
@@ -35,7 +37,7 @@ export default class Header extends Component {
             <ul className="nav nav-tabs">
               <li className="nav-item">
                 <Link
-                  className="nav-link"
+                  className={ `nav-link ${active === 'search' && 'active'}` }
                   aria-current="page"
                   data-testid="link-to-search"
                   to="/search"
@@ -45,7 +47,7 @@ export default class Header extends Component {
               </li>
               <li className="nav-item">
                 <Link
-                  className="nav-link"
+                  className={ `nav-link ${active === 'favorites' && 'active'}` }
                   data-testid="link-to-favorites"
                   to="/favorites"
                 >
@@ -54,7 +56,7 @@ export default class Header extends Component {
               </li>
               <li className="nav-item">
                 <Link
-                  className="nav-link"
+                  className={ `nav-link ${active === 'profile' && 'active'}` }
                   data-testid="link-to-profile"
                   to="/profile"
                 >
@@ -68,3 +70,7 @@ export default class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  active: propTypes.string.isRequired,
+};
