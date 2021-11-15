@@ -1,0 +1,8 @@
+.music-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.music-track {
+  flex-direction: row;
+}

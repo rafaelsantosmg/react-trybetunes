@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import propTypes, { shape } from 'prop-types';
+import './MusicCard.css';
 
 export default class MusicCard extends Component {
   render() {
     const { musics } = this.props;
     return (
-      <div>
+      <div className="music-card">
         { musics.map((music, index) => (
-          <div key={ `${music.artistId}${index}` }>
+          <div className="music-track" key={ `${music.artistId}${index}` }>
             <p>{ music.trackName }</p>
             <audio
               data-testid="audio-component"

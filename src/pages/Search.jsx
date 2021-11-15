@@ -61,7 +61,9 @@ export default class Search extends Component {
     } = this;
     return (
       <div className="search" data-testid="page-search">
-        <Header />
+        <Header
+          active="search"
+        />
         { !isLoading && (
           <Form
             title="Album"
