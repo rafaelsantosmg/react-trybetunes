@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import LinksAlbum from '../components/LinksAlbum';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import './Search.css';
+import Menu from '../components/Menu';
 
 export default class Search extends Component {
   constructor() {
@@ -61,9 +62,8 @@ export default class Search extends Component {
     } = this;
     return (
       <div className="search" data-testid="page-search">
-        <Header
-          active="search"
-        />
+        <Header />
+        <Menu active="search" />
         { !isLoading && (
           <Form
             title="Album"
