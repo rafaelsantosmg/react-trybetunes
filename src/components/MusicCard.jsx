@@ -31,7 +31,7 @@ export default class MusicCard extends Component {
           isLoading: false,
         });
       } else {
-        removeSong(music);
+        await removeSong(music);
         this.setState({
           isLoading: false,
           isChecked: false,
