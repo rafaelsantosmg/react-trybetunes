@@ -4,7 +4,6 @@ import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 import './Album.css';
-import Menu from '../components/Menu';
 
 export default class Album extends Component {
   constructor() {
@@ -34,7 +33,6 @@ export default class Album extends Component {
     return (
       <div className="page-album" data-testid="page-album">
         <Header />
-        <Menu />
         <div className="album-content">
           <figure className="album-image">
             <img src={ album.artworkUrl100 } alt={ album.artistName } />

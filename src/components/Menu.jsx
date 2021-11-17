@@ -6,7 +6,7 @@ export default class Menu extends Component {
   render() {
     const { active } = this.props;
     return (
-      <section className="nav-menu">
+      <section className="section-nav-menu">
         <nav className="nav-menu">
           <ul className="nav nav-tabs">
             <li className="nav-item">
