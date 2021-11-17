@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import Header from '../components/Header';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+
 import './Album.css';
 
 export default class Album extends Component {
@@ -48,7 +49,7 @@ export default class Album extends Component {
               key={ `${music.artistId}${index}` }
               music={ music }
             />
-          ))}
+          )) }
         </div>
       </div>
     );

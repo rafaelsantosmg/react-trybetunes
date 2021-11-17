@@ -56,5 +56,9 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
-  active: propTypes.string.isRequired,
+  active: propTypes.string,
+};
+
+Header.defaultProps = {
+  active: 'active',
 };
