@@ -9,7 +9,12 @@ export default class Profile extends Component {
   constructor() {
     super();
     this.state = {
-      users: {},
+      users: {
+        name: '',
+        email: '',
+        description: '',
+        image: '',
+      },
       isLoading: false,
     };
     this.getUserProfile = this.getUserProfile.bind(this);
@@ -42,7 +47,12 @@ export default class Profile extends Component {
               />
             </figure>
             <p>{ users.description }</p>
-            <Link to="profile/edit">Editar perfil</Link>
+            <Link
+              to="profile/edit"
+              users={ users }
+            >
+              Editar perfil
+            </Link>
           </div>
         ) }
       </div>
