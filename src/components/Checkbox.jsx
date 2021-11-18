@@ -7,7 +7,7 @@ export default class Checkbox extends Component {
     return (
       <div className="form-check">
         <label className="form-check-label" htmlFor={ id }>
-          Favoritas
+          Favorita
           <input
             className="form-check-input"
             data-testid={ dataId }
